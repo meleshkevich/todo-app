@@ -1,18 +1,41 @@
-import React from "react";
-import './todo-list-item';
- 
+import React, {Component} from "react";
+import './todo-list-item.css';
 
-const TodoListItem = ( {label, important = false }) => {
-    const style = {
-        color: important ? 'tomato' : 'black'
-
-    };
+export default class TodoListItem extends Component {
+     
+        state = {
+            done: false
+        };
     
-    return (
-        <span className='todo-list-item'
-              style={style}>
-        { label }
-        </span>);
-};
+        onLabelClick = () => {
+            this.setState(({done}) => {
+              return {
+                done: !done
+              };
+            });
+          };
+    
+     
+    render() { 
+        const { label } = this.props;
+        const { done, important } = this.state;
 
-export default TodoListItem;
+        let classNames = 'todo-list-item';
+        if (done) {
+        classNames += ' done';
+        }
+
+         
+        
+        return (
+        <span className={classNames}>
+            <span
+            className="todo-list-item-label"
+            onClick={ this.onLabelClick }>
+            {label}
+            </span>
+        </span>
+        );
+    };
+} 
+  
