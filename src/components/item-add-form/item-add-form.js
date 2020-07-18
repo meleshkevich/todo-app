@@ -4,23 +4,30 @@ import './item-add-form.css';
 
 export default class ItemAddForm extends Component {
 
-  state = {
+constructor (props) {
+  super(props);
+  this.state = {
     label: ''
-  };
+  }
+  this.onLabelChange = this.onLabelChange.bind(this);
+  this.onSubmit = this.onSubmit.bind(this);
+}
 
-  onLabelChange = (e) => {
-    this.setState({
+   
+
+  onLabelChange (e) {
+    this.setState ({
       label: e.target.value
     })
   };
 
-  onSubmit = (e) => {
+  onSubmit (e) {
     e.preventDefault();
-    const { label } = this.state;
-    this.setState({ label: '' });
-    const cb = this.props.onItemAdded || (() => {});
-    cb(label);
-  };
+    this.props.addItem(this.state.label);
+    this.setState({
+      label: ''
+    });
+  }
 
   render() {
     return (
@@ -28,14 +35,16 @@ export default class ItemAddForm extends Component {
         className="bottom-panel d-flex"
         onSubmit={this.onSubmit}>
 
-        <input type="text"
-               className="form-control new-todo-label"
-               value={this.state.label}
-               onChange={this.onLabelChange}
-               placeholder="What needs to be done?" />
+              <input type="text"
+                className="form-control new-todo-label"
+                value={this.state.label}
+                onChange={this.onLabelChange}
+                placeholder="What needs to be done?" />
 
-        <button type="submit"
-                className="btn btn-outline-secondary">Add</button>
+              <button type="submit"
+                className="btn btn-outline-secondary">
+                  Add
+              </button>
       </form>
     );
   }

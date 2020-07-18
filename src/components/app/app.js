@@ -60,7 +60,7 @@ addItem = (text) => {
     return {
       todoData: newArray
     }
-    });
+  });
    
 };
 
@@ -159,5 +159,3 @@ filter(items, filter) {
     );
   }
 };
-
- 
