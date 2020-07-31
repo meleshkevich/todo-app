@@ -16,7 +16,7 @@ This is a study project to learn basic React concepts:
 - Props  
 - Basic styling with CSS and Bootstrap.
 
----------------------------------------------- 
+--------------------------------------------
 To run this project locally: 
 - clone branch master with `$ git clone https://github.com/meleshkevich/todo-app.git`
   or fork it and then clone it from your forked repo
